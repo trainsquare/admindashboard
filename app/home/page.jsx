@@ -1,7 +1,8 @@
 "use client";
 import React from 'react'
-import TopCards from './components/TopCards'
-import NewHostList from './components/NewHostList';
+import TopCards from '../components/TopCards';
+
+import NewHostList from '../components/NewHostList';
 
 import { useState, useEffect } from 'react';
 const page = () => {
