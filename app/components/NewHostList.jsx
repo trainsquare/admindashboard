@@ -13,7 +13,7 @@ const NewHostList = ({data}) =>
       const bankDetails = prompt('Please enter your bank details:');
       if (bankDetails) {
         console.log(" local bank : ",bankDetails);
-        const response =await fetch('https://localhost:44333/api/hostadmin/approvehost', {
+        const response =await fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/approvehost', {
           method: 'POST',
           body: JSON.stringify({ hostId: hostId, BankAccount:bankDetails,payoutOption:payoutOption,}),
           headers: {
@@ -30,7 +30,7 @@ const NewHostList = ({data}) =>
       }
     } else {
       console.log(JSON.stringify({ hostId: hostId, payoutOption,token }));
-      const response =await fetch('https://localhost:44333/api/hostadmin/approvehost', 
+      const response =await fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/approvehost', 
       {
         method: 'POST',
         body: JSON.stringify({ hostId: hostId, payoutOption,token }),

@@ -15,7 +15,7 @@ const WorkshopToPay = () =>
       const bankDetails = prompt('Please enter your bank details:');
       if (bankDetails) {
         console.log(" local bank : ",bankDetails);
-        const response =await fetch('https://localhost:44333/api/hostadmin/approvehost', {
+        const response =await fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/approvehost', {
           method: 'POST',
           body: JSON.stringify({ hostId: hostId, BankAccount:bankDetails,payoutOption:payoutOption,}),
           headers: {
@@ -32,7 +32,7 @@ const WorkshopToPay = () =>
       }
     } else {
       console.log(JSON.stringify({ hostId: hostId, payoutOption,token }));
-      const response =await fetch('https://localhost:44333/api/hostadmin/approvehost', 
+      const response =await fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/approvehost', 
       {
         method: 'POST',
         body: JSON.stringify({ hostId: hostId, payoutOption,token }),
@@ -50,7 +50,7 @@ const WorkshopToPay = () =>
   const [workshopdata, setData] = useState([]);
 
   const fetchData = async () => {
-    const response = await fetch('https://localhost:44333/api/hostpaymentsummary/allworkshoppayment');
+    const response = await fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostpaymentsummary/allworkshoppayment');
     const workshopdata = await response.json();
     setData(workshopdata);
     console.log(workshopdata);

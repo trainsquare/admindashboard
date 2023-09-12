@@ -6,7 +6,7 @@ const AllUsers = () =>
   const [hostData, setData] = useState([]);
 
   const fetchData = async () => {
-    const response = await  fetch('https://localhost:44333/api/useradmin/getalluser');
+    const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/useradmin/getalluser');
     const hostData = await response.json();
     setData(hostData);
   };

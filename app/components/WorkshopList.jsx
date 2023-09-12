@@ -6,7 +6,7 @@ const WorkshopList = ({data}) =>
   const [workshopdata, setData] = useState([]);
 
   const fetchData = async () => {
-    const response = await fetch('https://localhost:44333/api/useradmin/getallworkshops');
+    const response = await fetch('https://trainsquare-web-api2.azurewebsites.net/api/useradmin/getallworkshops');
     const workshopdata = await response.json();
     setData(workshopdata);
     console.log(workshopdata);

@@ -14,7 +14,7 @@ const page = () => {
     try{
       const token = localStorage.getItem("token");
 
-      const response = await fetch('https://localhost:44333/api/hostadmin/getnewhost', {
+      const response = await fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getnewhost', {
        
         headers: {
           'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ const page = () => {
        
       });
   
-      //const response = await fetch('https://localhost:44333/api/hostadmin/getnewhost');
+      //const response = await fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getnewhost');
       const data = await response.json();
       setData(data);
     }

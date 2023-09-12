@@ -6,7 +6,7 @@ const AllHostList = () =>
   const [hostData, setData] = useState([]);
 
   const fetchData = async () => {
-    const response = await  fetch('https://localhost:44333/api/hostadmin/getallhosts');
+    const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getallhosts');
     const hostData = await response.json();
     setData(hostData);
   };
@@ -20,7 +20,7 @@ const AllHostList = () =>
       const bankDetails = prompt('Please enter your bank details:');
       if (bankDetails) {
         console.log(" local bank : ",bankDetails);
-        const response =await fetch('https://localhost:44333/api/hostadmin/approvehost', {
+        const response =await fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/approvehost', {
           method: 'POST',
           body: JSON.stringify({ id, bankDetails,payoutOption}),
           headers: {
@@ -35,7 +35,7 @@ const AllHostList = () =>
         } 
       }
     } else {
-      await fetch('https://localhost:44333/api/hostadmin/approvehost', {
+      await fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/approvehost', {
         method: 'POST',
         body: JSON.stringify({ id, payoutOption,payoutOption }),
         headers: {

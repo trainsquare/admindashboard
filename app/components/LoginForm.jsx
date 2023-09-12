@@ -17,7 +17,7 @@ function LoginForm() {
     event.preventDefault();
     console.log(JSON.stringify({ email, password }));
     try {
-      const response = await fetch("https://localhost:44333/api/auth/login", {
+      const response = await fetch("https://trainsquare-web-api2.azurewebsites.net/api/auth/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
         headers: {

@@ -5,7 +5,7 @@ const TopCards = () => {
     const [summarydata, setData] = useState([]);
 
     const fetchData = async () => {
-        const response = await  fetch('https://localhost:44333/api/useradmin/getsystemsummary');
+        const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/useradmin/getsystemsummary');
         const summarydata = await response.json();
         setData(summarydata);
         console.log(summarydata);
