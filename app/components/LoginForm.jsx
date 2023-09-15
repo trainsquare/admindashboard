@@ -9,7 +9,7 @@ function LoginForm() {
   const router = useRouter();
   const login = useContext(AuthContext);
   
-  const [password, setPassword] = useState("Tq++100100");
+  const [password, setPassword] = useState("Tq--100100");
   const [error, setError] = useState("");
   const [email, setEmail] = useState('igbasanx@gmail.com');
 
