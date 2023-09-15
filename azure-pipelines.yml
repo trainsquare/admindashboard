@@ -1,0 +1,58 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pr:
+  branches:
+    include:
+      - '*'
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+jobs:
+  - job: Build
+    displayName: 'Build and Deploy'
+    steps:
+      - checkout: self
+      
+
+      - task: NodeTool@0
+        inputs:
+          versionSpec: '16.x'
+
+      - script: |
+            npm install
+            npm run build --if-present
+            npm run test --if-present
+     
+
+      - task: ArchiveFiles@2
+        displayName: 'Archive Files'
+        inputs:
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)'  # Update with the path to your build output folder, if applicable
+          includeRootFolder: false
+          archiveType: 'zip'
+          archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+          replaceExistingArchive: true
+
+      - task: PublishPipelineArtifact@1
+        displayName: 'Publish Artifact'
+        inputs:
+          targetPath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+          artifactName: 'dist'
+
+
+
+      - task: AzureRmWebAppDeployment@4
+        inputs:
+          ConnectionType: 'AzureRM'
+          azureSubscription: 'Trainsquare - Microsoft Azure Sponsorship (dd1c0dde-bf25-496d-9c2e-adecb45809d1)'
+          appType: 'webAppLinux'
+          WebAppName: 'trainsquareBackOffice '
+          packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
+          RuntimeStack: 'NODE|16-lts'
+          StartupCommand: 'node server.js'
+          
+      
