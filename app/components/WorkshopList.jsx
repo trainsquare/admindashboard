@@ -4,9 +4,13 @@ import { useState,useEffect } from 'react';
 const WorkshopList = ({data}) => 
 {
   const [workshopdata, setData] = useState([]);
-
+  const token = localStorage.getItem('token');
   const fetchData = async () => {
-    const response = await fetch('https://trainsquare-web-api2.azurewebsites.net/api/useradmin/getallworkshops');
+    const response = await fetch('https://trainsquare-web-api2.azurewebsites.net/api/useradmin/getallworkshops', {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
     const workshopdata = await response.json();
     setData(workshopdata);
     console.log(workshopdata);

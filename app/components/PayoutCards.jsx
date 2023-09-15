@@ -3,9 +3,13 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 const PayoutCards = () => {
     const [summarydata, setData] = useState([]);
-
+    const token = localStorage.getItem('token');
     const fetchData = async () => {
-        const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getworkshopsummary');
+        const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getworkshopsummary', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
         const summarydata = await response.json();
         setData(summarydata);
         console.log(summarydata);

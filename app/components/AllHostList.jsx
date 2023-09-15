@@ -4,9 +4,13 @@ import { useState,useEffect } from 'react';
 const AllHostList = () => 
 {
   const [hostData, setData] = useState([]);
-
+  const token = localStorage.getItem('token');
   const fetchData = async () => {
-    const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getallhosts');
+    const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getallhosts', {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const hostData = await response.json();
     setData(hostData);
   };

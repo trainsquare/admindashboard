@@ -3,12 +3,17 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 const TopCards = () => {
     const [summarydata, setData] = useState([]);
-
+    const token = localStorage.getItem('token');
     const fetchData = async () => {
-        const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/useradmin/getsystemsummary');
+        const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getoverallsummary', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
         const summarydata = await response.json();
         setData(summarydata);
         console.log(summarydata);
+        console.log("topcards")
       };
       useEffect(() => {
         fetchData();
