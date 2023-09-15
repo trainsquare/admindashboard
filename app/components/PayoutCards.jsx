@@ -5,7 +5,7 @@ const PayoutCards = () => {
     const [summarydata, setData] = useState([]);
 
     const fetchData = async () => {
-        const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/useradmin/getworkshopsummary');
+        const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getworkshopsummary');
         const summarydata = await response.json();
         setData(summarydata);
         console.log(summarydata);
