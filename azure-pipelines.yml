@@ -26,19 +26,7 @@ jobs:
             npm install
             npm run build --if-present
             npm run test --if-present
-       #     npm install --production --omit=dev     
-          # npm install --production --no-package-lock
-
-     # - script: |
-       #   npm install --save-dev eslint
-
-      #- script: |
-      #    npm run build
-     #   continueOnError: true
-     # - script: |
-     #      npm run next-build
-     #   continueOnError: true
-
+      
       - task: ArchiveFiles@2
         displayName: 'Archive Files'
         inputs:
@@ -65,6 +53,6 @@ jobs:
           WebAppName: 'trainsquareBackOffice '
           packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
           RuntimeStack: 'NODE|16-lts'
-          StartupCommand: 'npm run start'
+          StartupCommand: 'next start'
           
       
