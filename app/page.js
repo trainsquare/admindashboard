@@ -1,7 +1,7 @@
 "use client";
 import React from 'react'
 import TopCards from './components/TopCards';
-
+import Cookies from 'js-cookie'
 import NewHostList from './components/NewHostList';
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from 'react';

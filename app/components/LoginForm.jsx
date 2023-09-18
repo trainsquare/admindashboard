@@ -35,7 +35,7 @@ function LoginForm() {
       console.log(result);
       Cookies.set('token', token);
       
-        
+        console.log(token);
       if (roles.includes("SuperAdmin")) {
         console.log("superadmin role");
        
