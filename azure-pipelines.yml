@@ -65,6 +65,6 @@ jobs:
           WebAppName: 'trainsquareBackOffice '
           packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
           RuntimeStack: 'NODE|16-lts'
-          StartupCommand: 'npm start'
+          StartupCommand: 'node server.js'
           
       
