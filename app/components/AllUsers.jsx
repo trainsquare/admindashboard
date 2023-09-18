@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+import Cookies from 'js-cookie'
 import { useState,useEffect } from 'react';
 const AllUsers = () => 
 {

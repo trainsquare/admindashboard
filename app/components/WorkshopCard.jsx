@@ -1,7 +1,12 @@
 "use client"
+
 import React from 'react'
 import { useState,useEffect } from 'react';
-const token = localStorage.getItem('token');
+import Cookies from 'js-cookie'
+
+
+// Retrieve the token from the cookies
+const token=Cookies.get('token')
 const WorkshopCard = () => {
     const [summarydata, setData] = useState([]);
 

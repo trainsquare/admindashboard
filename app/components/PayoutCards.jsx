@@ -1,9 +1,13 @@
 "use client"
 import React from 'react'
+import Cookies from 'js-cookie'
 import { useState,useEffect } from 'react';
 const PayoutCards = () => {
     const [summarydata, setData] = useState([]);
-    const token = localStorage.getItem('token');
+
+
+// Retrieve the token from the cookies
+const token= Cookies.get('token');
     const fetchData = async () => {
         const response = await  fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getworkshopsummary', {
             headers: {

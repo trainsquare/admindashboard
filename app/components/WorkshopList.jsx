@@ -1,10 +1,11 @@
 "use client"
 import React from 'react';
+import Cookies from 'js-cookie'
 import { useState,useEffect } from 'react';
 const WorkshopList = ({data}) => 
 {
   const [workshopdata, setData] = useState([]);
-  const token = localStorage.getItem('token');
+  const token= Cookies.get('token');
   const fetchData = async () => {
     const response = await fetch('https://trainsquare-web-api2.azurewebsites.net/api/useradmin/getallworkshops', {
         headers: {

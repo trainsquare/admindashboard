@@ -1,5 +1,6 @@
 "use client";
 import { useContext, useState } from "react";
+import Cookies from "js-cookie";
 
 import { useRouter } from "next/navigation";
 //import { AppContext } from "/context/AppContext";
@@ -32,14 +33,12 @@ function LoginForm() {
       const roles =result.roles;
       console.log(200);
       console.log(result);
+      Cookies.set('token', token);
+      
         
       if (roles.includes("SuperAdmin")) {
         console.log("superadmin role");
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", result.fullname);
-        localStorage.setItem("host", result.isHost);
-        localStorage.setItem("email", result.email);
-        localStorage.setItem("roles", result.roles);
+       
         router.push("/"); 
         
       } 

@@ -12,7 +12,10 @@ const page = () => {
 
   const fetchData = async () => {
     try{
-      const token = localStorage.getItem("token");
+      //
+
+// Retrieve the token from the cookies
+const token= Cookies.get('token');
 
       const response = await fetch('https://trainsquare-web-api2.azurewebsites.net/api/hostadmin/getnewhost', {
        
@@ -36,7 +39,10 @@ const page = () => {
     
   };
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    
+
+// Retrieve the token from the cookies
+const token= Cookies.get('token');
     console.log(token);
     if((token===null)||(token==="")){
       console.log('no token')

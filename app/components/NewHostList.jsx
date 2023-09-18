@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from 'js-cookie'
 import { useState,useEffect } from 'react';
 const NewHostList = ({data}) => 
 {
@@ -7,7 +8,10 @@ const NewHostList = ({data}) =>
 
 
   const handleApproval = async (hostId, payoutOption) => {
-    const token = localStorage.getItem("token");
+    
+
+// Retrieve the token from the cookies
+const token= Cookies.get('token');
     console.log("id "+ hostId + " payout option " +payoutOption)
     if (payoutOption==="localtransfer") {
       const bankDetails = prompt('Please enter your bank details:');
