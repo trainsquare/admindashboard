@@ -56,6 +56,7 @@ jobs:
 
 
 
+
       - task: AzureRmWebAppDeployment@4
         inputs:
           ConnectionType: 'AzureRM'
@@ -64,6 +65,6 @@ jobs:
           WebAppName: 'trainsquareBackOffice '
           packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
           RuntimeStack: 'NODE|16-lts'
-          StartupCommand: 'node server.js'
+          StartupCommand: 'npm start'
           
       
