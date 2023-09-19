@@ -55,9 +55,9 @@ jobs:
           RuntimeStack: 'NODE|16-lts'
          # StartupCommand: 'next start'
           StartupCommand: 'npm run start'
-          ScriptType: 'Inline Script'
-          InlineScript: |
-            npm install
-            npm run build --if-present
+         # ScriptType: 'Inline Script'
+         # InlineScript: |
+          #  npm install
+          #  npm run build --if-present
             
       
