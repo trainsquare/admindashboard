@@ -16,21 +16,20 @@ jobs:
     displayName: 'Build and Deploy'
     steps:
       - checkout: self
-      
 
       - task: NodeTool@0
         inputs:
           versionSpec: '16.x'
 
       - script: |
-            npm install
-            npm run build --if-present
-            npm run test --if-present
-      
+          npm ci
+          npm run build --if-present
+          npm run test --if-present
+
       - task: ArchiveFiles@2
         displayName: 'Archive Files'
         inputs:
-          rootFolderOrFile: '$(System.DefaultWorkingDirectory)'  # Update with the path to your build output folder, if applicable
+          rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
           includeRootFolder: false
           archiveType: 'zip'
           archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
@@ -42,23 +41,11 @@ jobs:
           targetPath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
           artifactName: 'dist'
 
-
-
-
-      - task: AzureRmWebAppDeployment@4
+      - task: AzureWebApp@1
+        displayName: 'Azure Web App Deploy'
         inputs:
-          ConnectionType: 'AzureRM'
+          appType: webAppLinux
           azureSubscription: 'Trainsquare - Microsoft Azure Sponsorship (dd1c0dde-bf25-496d-9c2e-adecb45809d1)'
-          appType: 'webAppLinux'
-          WebAppName: 'trainsquareBackOffice '
-          packageForLinux: '$(Pipeline.Workspace)/**/*.zip'
-          RuntimeStack: 'NODE|16-lts'
-         # StartupCommand: 'next start'
-          StartupCommand: 'npm run start'
-          ScriptType: 'Inline Script'
-          InlineScript: |
-            npm ci
-            npm run build --if-present
-            npm run start
-            
-      
+          appName: 'trainsquareBackOffice'  # Update with the name of your Azure App Service
+          package: '$(Pipeline.Workspace)/dist/*.zip'
+          deploymentMethod: 'auto'
