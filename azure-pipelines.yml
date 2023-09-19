@@ -47,5 +47,5 @@ jobs:
           appType: webAppLinux
           azureSubscription: 'Trainsquare - Microsoft Azure Sponsorship (dd1c0dde-bf25-496d-9c2e-adecb45809d1)'
           appName: 'trainsquareBackOffice'  # Update with the name of your Azure App Service
-          package: '$(Pipeline.Workspace)/dist/*.zip'
+          package: '(Pipeline.Workspace)/**/*.zip'
           deploymentMethod: 'auto'
