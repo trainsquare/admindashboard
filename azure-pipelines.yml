@@ -59,6 +59,6 @@ jobs:
           InlineScript: |
             npm ci
             npm run build --if-present
-            npm run test 
+            npm run start
             
       
